@@ -38,10 +38,10 @@ namespace PizzaNWangs.Data
 
             // Seed data for Orders - 3 Paid and 1 Closed
             modelBuilder.Entity<Order>().HasData(
-                new Order { Id = 1, UserId = 1, CustomerPhone = "123-456-7890", CustomerEmail = "user1@pizzanwangs.com", OrderType = "Takeout", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
-                new Order { Id = 2, UserId = 2, CustomerPhone = "234-567-8901", CustomerEmail = "user2@pizzanwangs.com", OrderType = "Delivery", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
-                new Order { Id = 3, UserId = 3, CustomerPhone = "345-678-9012", CustomerEmail = "user3@pizzanwangs.com", OrderType = "Takeout", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
-                new Order { Id = 4, UserId = 4, CustomerPhone = "456-789-0123", CustomerEmail = "user4@pizzanwangs.com", OrderType = "Delivery", OrderStatus = OrderStatus.Closed, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc }
+                new Order { Id = 1, CustomerPhone = "123-456-7890", CustomerEmail = "user1@pizzanwangs.com", OrderType = "Takeout", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
+                new Order { Id = 2, CustomerPhone = "234-567-8901", CustomerEmail = "user2@pizzanwangs.com", OrderType = "Delivery", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
+                new Order { Id = 3, CustomerPhone = "345-678-9012", CustomerEmail = "user3@pizzanwangs.com", OrderType = "Takeout", OrderStatus = OrderStatus.Paid, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc },
+                new Order { Id = 4, CustomerPhone = "456-789-0123", CustomerEmail = "user4@pizzanwangs.com", OrderType = "Delivery", OrderStatus = OrderStatus.Closed, CreatedAt = currentTimeUtc, UpdatedAt = currentTimeUtc }
             );
 
             // Seed data for OrderItems - Tied to the orders above
