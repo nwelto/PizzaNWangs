@@ -47,5 +47,6 @@ if (app.Environment.IsDevelopment())
 
 OrderAPI.Map(app);
 OrderItemAPI.Map(app);
+MenuItemAPI.Map(app);
 
 app.Run();
