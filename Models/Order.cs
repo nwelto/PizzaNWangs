@@ -9,9 +9,7 @@
 
     public class Order
     {
-        public int Id { get; set; }
-        public int UserId { get; set; } 
-        public User User { get; set; } 
+        public int Id { get; set; } 
         public string CustomerPhone { get; set; } = string.Empty;
         public string CustomerEmail { get; set; } = string.Empty;
         public string OrderType { get; set; } = string.Empty;
