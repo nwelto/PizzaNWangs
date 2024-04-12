@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PizzaNWangs.Data;
@@ -11,9 +12,10 @@ using PizzaNWangs.Data;
 namespace PizzaNWangs.Migrations
 {
     [DbContext(typeof(PizzaNWangsDbContext))]
-    partial class PizzaNWangsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240411001710_AddUserDetails")]
+    partial class AddUserDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,42 +127,42 @@ namespace PizzaNWangs.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             CustomerEmail = "user1@pizzanwangs.com",
                             CustomerPhone = "123-456-7890",
                             OrderStatus = 1,
                             OrderType = "Takeout",
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             CustomerEmail = "user2@pizzanwangs.com",
                             CustomerPhone = "234-567-8901",
                             OrderStatus = 1,
                             OrderType = "Delivery",
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             CustomerEmail = "user3@pizzanwangs.com",
                             CustomerPhone = "345-678-9012",
                             OrderStatus = 1,
                             OrderType = "Takeout",
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             CustomerEmail = "user4@pizzanwangs.com",
                             CustomerPhone = "456-789-0123",
                             OrderStatus = 2,
                             OrderType = "Delivery",
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         });
                 });
 
@@ -196,34 +198,34 @@ namespace PizzaNWangs.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             MenuItemId = 1,
                             OrderId = 1,
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             MenuItemId = 2,
                             OrderId = 2,
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             MenuItemId = 3,
                             OrderId = 3,
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862),
+                            CreatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423),
                             MenuItemId = 4,
                             OrderId = 4,
-                            UpdatedAt = new DateTime(2024, 4, 11, 1, 8, 39, 54, DateTimeKind.Utc).AddTicks(3862)
+                            UpdatedAt = new DateTime(2024, 4, 11, 0, 17, 10, 824, DateTimeKind.Utc).AddTicks(1423)
                         });
                 });
 
@@ -251,10 +253,6 @@ namespace PizzaNWangs.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Uid")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -263,38 +261,34 @@ namespace PizzaNWangs.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "amuro@whitebase.com",
-                            FirstName = "Amuro",
-                            LastName = "Ray",
-                            ProfilePic = "url-to-amuro-pic",
-                            Uid = "amuro-ray-uid"
+                            Email = "user1@pizzanwangs.com",
+                            FirstName = "",
+                            LastName = "",
+                            ProfilePic = ""
                         },
                         new
                         {
                             Id = 2,
-                            Email = "char@zeon.com",
-                            FirstName = "Char",
-                            LastName = "Aznable",
-                            ProfilePic = "url-to-char-pic",
-                            Uid = "char-aznable-uid"
+                            Email = "user2@pizzanwangs.com",
+                            FirstName = "",
+                            LastName = "",
+                            ProfilePic = ""
                         },
                         new
                         {
                             Id = 3,
-                            Email = "kamille@aeug.com",
-                            FirstName = "Kamille",
-                            LastName = "Bidan",
-                            ProfilePic = "url-to-kamille-pic",
-                            Uid = "kamille-bidan-uid"
+                            Email = "user3@pizzanwangs.com",
+                            FirstName = "",
+                            LastName = "",
+                            ProfilePic = ""
                         },
                         new
                         {
                             Id = 4,
-                            Email = "judau@junkyard.com",
-                            FirstName = "Judau",
-                            LastName = "Ashta",
-                            ProfilePic = "url-to-judau-pic",
-                            Uid = "judau-ashta-uid"
+                            Email = "user4@pizzanwangs.com",
+                            FirstName = "",
+                            LastName = "",
+                            ProfilePic = ""
                         });
                 });
 

@@ -16,11 +16,11 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>
     {
         policy.WithOrigins("http://localhost:3000", "http://localhost:5003")
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
+
 
 // allows passing datetimes without time zone data 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
@@ -48,5 +48,6 @@ if (app.Environment.IsDevelopment())
 OrderAPI.Map(app);
 OrderItemAPI.Map(app);
 MenuItemAPI.Map(app);
+UserAPI.Map(app);
 
 app.Run();
