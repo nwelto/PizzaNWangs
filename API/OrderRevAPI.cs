@@ -13,22 +13,34 @@ namespace PizzaNWangs.API
         {
             app.MapGet("/revenue", async (PizzaNWangsDbContext db, DateTime? start, DateTime? end) =>
             {
-                var query = db.Orders.AsQueryable();
+                var query = db.Orders
+                              .Include(o => o.OrderItems)
+                              .ThenInclude(oi => oi.MenuItem)
+                              .AsQueryable();
 
                 if (start.HasValue && end.HasValue)
                 {
                     query = query.Where(o => o.CreatedAt >= start.Value && o.CreatedAt <= end.Value);
                 }
 
-                var totalRevenue = await query
+                var paidOrders = await query
                     .Where(o => o.OrderStatus == OrderStatus.Paid)
-                    .SumAsync(o => o.OrderItems.Sum(oi => oi.MenuItem.Price));
+                    .ToListAsync();
+                var totalRevenue = paidOrders.Sum(o => o.OrderItems.Sum(oi => oi.MenuItem.Price));
+                var paidOrdersCount = paidOrders.Count;
 
-                var closedOrdersCount = await query
-                    .CountAsync(o => o.OrderStatus == OrderStatus.Closed);
 
-                var openOrdersCount = await query
-                    .CountAsync(o => o.OrderStatus == OrderStatus.Open);
+                var closedOrders = await query
+                    .Where(o => o.OrderStatus == OrderStatus.Closed)
+                    .ToListAsync();
+                var lostSales = closedOrders.Sum(o => o.OrderItems.Sum(oi => oi.MenuItem.Price));
+                var closedOrdersCount = closedOrders.Count;
+
+                var openOrders = await query
+                    .Where(o => o.OrderStatus == OrderStatus.Open)
+                    .ToListAsync();
+                var potentialRevenue = openOrders.Sum(o => o.OrderItems.Sum(oi => oi.MenuItem.Price));
+                var openOrdersCount = openOrders.Count;
 
                 var revenueData = new OrderRevDTO
                 {
@@ -36,12 +48,16 @@ namespace PizzaNWangs.API
                     EndDate = end ?? DateTime.MaxValue,
                     TotalRevenue = totalRevenue,
                     ClosedOrdersCount = closedOrdersCount,
-                    OpenOrdersCount = openOrdersCount
+                    LostSales = lostSales,
+                    OpenOrdersCount = openOrdersCount,
+                    PotentialRevenue = potentialRevenue,
+                    PaidOrdersCount = paidOrdersCount
                 };
 
                 return Results.Ok(revenueData);
             });
         }
+
     }
 }
 

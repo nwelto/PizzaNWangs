@@ -49,5 +49,6 @@ OrderAPI.Map(app);
 OrderItemAPI.Map(app);
 MenuItemAPI.Map(app);
 UserAPI.Map(app);
+RevenueAPI.Map(app);
 
 app.Run();
