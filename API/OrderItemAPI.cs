@@ -48,8 +48,25 @@ namespace PizzaNWangs.API
 
                 return Results.Ok($"OrderItem with ID {id} has been successfully deleted.");
             });
+
+            app.MapGet("/orderItems/order/{orderId}", async (PizzaNWangsDbContext db, int orderId) =>
+            {
+                var orderItems = await db.OrderItems
+                                         .Where(oi => oi.OrderId == orderId)
+                                         .Include(oi => oi.MenuItem)
+                                         .ToListAsync();
+
+                if (!orderItems.Any())
+                {
+                    return Results.NotFound($"No items found for Order ID {orderId}.");
+                }
+
+                return Results.Ok(orderItems);
+            });
+
         }
     }
 }
+
 
 

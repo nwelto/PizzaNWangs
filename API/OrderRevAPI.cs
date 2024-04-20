@@ -11,17 +11,12 @@ namespace PizzaNWangs.API
     {
         public static void Map(WebApplication app)
         {
-            app.MapGet("/revenue", async (PizzaNWangsDbContext db, DateTime? start, DateTime? end) =>
+            app.MapGet("/revenue", async (PizzaNWangsDbContext db) =>
             {
                 var query = db.Orders
                               .Include(o => o.OrderItems)
                               .ThenInclude(oi => oi.MenuItem)
                               .AsQueryable();
-
-                if (start.HasValue && end.HasValue)
-                {
-                    query = query.Where(o => o.CreatedAt >= start.Value && o.CreatedAt <= end.Value);
-                }
 
                 var paidOrders = await query
                     .Where(o => o.OrderStatus == OrderStatus.Paid)
@@ -44,8 +39,6 @@ namespace PizzaNWangs.API
 
                 var revenueData = new OrderRevDTO
                 {
-                    StartDate = start ?? DateTime.MinValue,
-                    EndDate = end ?? DateTime.MaxValue,
                     TotalRevenue = totalRevenue,
                     ClosedOrdersCount = closedOrdersCount,
                     LostSales = lostSales,
@@ -60,4 +53,5 @@ namespace PizzaNWangs.API
 
     }
 }
+
 

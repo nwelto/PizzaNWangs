@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PizzaNWangs.Data;
@@ -11,9 +12,10 @@ using PizzaNWangs.Data;
 namespace PizzaNWangs.Migrations
 {
     [DbContext(typeof(PizzaNWangsDbContext))]
-    partial class PizzaNWangsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416031611_AddedGetOrderItemsCall")]
+    partial class AddedGetOrderItemsCall
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,6 +93,9 @@ namespace PizzaNWangs.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("CustomerEmail")
                         .IsRequired()
                         .HasColumnType("text");
@@ -106,6 +111,9 @@ namespace PizzaNWangs.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
@@ -119,66 +127,82 @@ namespace PizzaNWangs.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3579),
                             CustomerEmail = "user1@pizzanwangs.com",
                             CustomerPhone = "123-456-7890",
                             OrderStatus = 1,
-                            OrderType = "Takeout"
+                            OrderType = "Takeout",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3580)
                         },
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3584),
                             CustomerEmail = "user2@pizzanwangs.com",
                             CustomerPhone = "234-567-8901",
                             OrderStatus = 1,
-                            OrderType = "Delivery"
+                            OrderType = "Delivery",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3584)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3587),
                             CustomerEmail = "user3@pizzanwangs.com",
                             CustomerPhone = "345-678-9012",
                             OrderStatus = 1,
-                            OrderType = "Takeout"
+                            OrderType = "Takeout",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3587)
                         },
                         new
                         {
                             Id = 4,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3590),
                             CustomerEmail = "user4@pizzanwangs.com",
                             CustomerPhone = "456-789-0123",
                             OrderStatus = 2,
-                            OrderType = "Delivery"
+                            OrderType = "Delivery",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3590)
                         },
                         new
                         {
                             Id = 5,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3593),
                             CustomerEmail = "user5@pizzanwangs.com",
                             CustomerPhone = "567-890-1234",
                             OrderStatus = 2,
-                            OrderType = "Takeout"
+                            OrderType = "Takeout",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3593)
                         },
                         new
                         {
                             Id = 6,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3596),
                             CustomerEmail = "user6@pizzanwangs.com",
                             CustomerPhone = "678-901-2345",
                             OrderStatus = 1,
-                            OrderType = "Delivery"
+                            OrderType = "Delivery",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3596)
                         },
                         new
                         {
                             Id = 7,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3599),
                             CustomerEmail = "user7@pizzanwangs.com",
                             CustomerPhone = "789-012-3456",
                             OrderStatus = 2,
-                            OrderType = "Takeout"
+                            OrderType = "Takeout",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3599)
                         },
                         new
                         {
                             Id = 8,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3601),
                             CustomerEmail = "user8@pizzanwangs.com",
                             CustomerPhone = "890-123-4567",
                             OrderStatus = 0,
-                            OrderType = "Delivery"
+                            OrderType = "Delivery",
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3602)
                         });
                 });
 
@@ -190,14 +214,17 @@ namespace PizzaNWangs.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int>("MenuItemId")
                         .HasColumnType("integer");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -211,30 +238,34 @@ namespace PizzaNWangs.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365),
                             MenuItemId = 1,
                             OrderId = 1,
-                            Quantity = 0
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365)
                         },
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365),
                             MenuItemId = 2,
                             OrderId = 2,
-                            Quantity = 0
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365),
                             MenuItemId = 3,
                             OrderId = 3,
-                            Quantity = 0
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365)
                         },
                         new
                         {
                             Id = 4,
+                            CreatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365),
                             MenuItemId = 4,
                             OrderId = 4,
-                            Quantity = 0
+                            UpdatedAt = new DateTime(2024, 4, 16, 3, 16, 11, 656, DateTimeKind.Utc).AddTicks(3365)
                         });
                 });
 
